@@ -4,31 +4,33 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Phong</h4>
-<hr />
+<h1>THÊM MỚI PHÒNG</h1>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="TenPhong" class="control-label"></label>
+                <label asp-for="MaPhong" class="control-label">✪ MÃ PHÒNG</label>
+                <input asp-for="MaPhong" class="form-control" />
+                <span asp-validation-for="MaPhong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenPhong" class="control-label">✪ TÊN PHÒNG</label>
                 <input asp-for="TenPhong" class="form-control" />
                 <span asp-validation-for="TenPhong" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LoaiPhong" class="control-label"></label>
+                <label asp-for="LoaiPhong" class="control-label">✪ LOẠI PHÒNG</label>
                 <input asp-for="LoaiPhong" class="form-control" />
                 <span asp-validation-for="LoaiPhong" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GiaTien" class="control-label"></label>
+                <label asp-for="GiaTien" class="control-label">✪ GIÁ TIỀN</label>
                 <input asp-for="GiaTien" class="form-control" />
                 <span asp-validation-for="GiaTien" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MaKhachHang" class="control-label"></label>
+                <label asp-for="MaKhachHang" class="control-label"> ✪MÃ KHÁCH HÀNG</label>
                 <select asp-for="MaKhachHang" class ="form-control" asp-items="ViewBag.MaKhachHang"></select>
             </div>
             <div class="form-group">
@@ -37,11 +39,15 @@
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<style>
+h1{
+    margin-bottom:50px;
+    color:rgb(58, 58, 221);
+}
+body{
+    background-color:rgb(211, 228, 231);
+}
+</style>
