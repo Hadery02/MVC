@@ -275,3 +275,4 @@ D:\BTL\BTL\obj\Debug\net8.0\refint\BTL.dll
 D:\BTL\BTL\obj\Debug\net8.0\BTL.pdb
 D:\BTL\BTL\obj\Debug\net8.0\BTL.genruntimeconfig.cache
 D:\BTL\BTL\obj\Debug\net8.0\ref\BTL.dll
+D:\BTL\BTL\obj\Debug\net8.0\BTL.sourcelink.json
