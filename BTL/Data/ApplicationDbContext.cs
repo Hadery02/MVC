@@ -8,5 +8,6 @@ namespace BTL.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {}
         public DbSet<KhachHang> KhachHang { get ; set;}
+        public DbSet<Phong> Phong { get ; set;}
     }
 }
