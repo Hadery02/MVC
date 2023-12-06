@@ -275,6 +275,9 @@ D:\BTL\BTL\obj\Debug\net8.0\refint\BTL.dll
 D:\BTL\BTL\obj\Debug\net8.0\BTL.pdb
 D:\BTL\BTL\obj\Debug\net8.0\BTL.genruntimeconfig.cache
 D:\BTL\BTL\obj\Debug\net8.0\ref\BTL.dll
+<<<<<<< HEAD
+D:\BTL\BTL\obj\Debug\net8.0\BTL.sourcelink.json
+=======
 C:\BAITAPLON\BTL\bin\Debug\net8.0\appsettings.Development.json
 C:\BAITAPLON\BTL\bin\Debug\net8.0\appsettings.json
 C:\BAITAPLON\BTL\bin\Debug\net8.0\BTL.staticwebassets.runtime.json
@@ -831,3 +834,5 @@ D:\BaiTapLon\BTL\obj\Debug\net8.0\refint\BTL.dll
 D:\BaiTapLon\BTL\obj\Debug\net8.0\BTL.pdb
 D:\BaiTapLon\BTL\obj\Debug\net8.0\BTL.genruntimeconfig.cache
 D:\BaiTapLon\BTL\obj\Debug\net8.0\ref\BTL.dll
+>>>>>>> 0507769fdf13e42c3e2fcdf238fae4bddeeb1eeb
+>>>>>>> 1086f80ee71493a29428852295a6ba08da3440f0

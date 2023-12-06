@@ -1,31 +1,37 @@
+<!DOCTYPE html>
+<html>
+
 @model IEnumerable<BTL.Models.KhachHang>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Thông tin khách hàng </h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table  id="a">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.HoTen)
+                Mã khách hàng
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DiaChi)
+                Họ và tên
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Sdt)
+                Địa Chỉ
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tuoi)
+                Số điện thoại
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NgayThue)
+                Tuổi
+            </th>
+            <th>
+                Ngày Thuê
             </th>
             <th></th>
         </tr>
@@ -33,27 +39,62 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            <td class="w3-center">
+                @Html.DisplayFor(modelItem => item.MaKhachHang)
+            </td>
+            <td class="w3-center">
                 @Html.DisplayFor(modelItem => item.HoTen)
             </td>
-            <td>
+            <td class="w3-center">
                 @Html.DisplayFor(modelItem => item.DiaChi)
             </td>
-            <td>
+            <td class="w3-center">
                 @Html.DisplayFor(modelItem => item.Sdt)
             </td>
-            <td>
+            <td class="w3-center">
                 @Html.DisplayFor(modelItem => item.Tuoi)
             </td>
-            <td>
+
+            <td class="w3-center">
                 @Html.DisplayFor(modelItem => item.NgayThue)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.MaKhachHang">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MaKhachHang">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MaKhachHang">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.MaKhachHang">Sửa </a> |
+                <a asp-action="Details" asp-route-id="@item.MaKhachHang">Chi tiết </a> |
+                <a asp-action="Delete" asp-route-id="@item.MaKhachHang">Xóa</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<style>
+#a{
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top:100px;
+}
+
+#a td, #a th {
+  border: 1px solid #631c1c;
+  padding: 8px;
+}  
+#a tr:nth-child(even){background-color: #c3f3f5;}
+
+#a tr:hover {background-color: #dddddd;}
+
+#a th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+h1 {
+    text-align :center;
+}
+{
+    color : light-green;
+}
+</style>
+</html>
