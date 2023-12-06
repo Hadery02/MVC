@@ -4,11 +4,10 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<h1>Xóa Hóa Đơn</h1>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>HoaDon</h4>
+    <table>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -36,10 +35,13 @@
             @Html.DisplayFor(model => model.Phong.MaPhong)
         </dd>
     </dl>
-    
+    </table>
     <form asp-action="Delete">
         <input type="hidden" asp-for="MaHoaDon" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index">Quay Lại</a>
     </form>
 </div>
+<style>
+    
+</style>
