@@ -10,27 +10,27 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="MaPhong" class="control-label">✪ MÃ PHÒNG</label>
+                <label>✪ MÃ PHÒNG</label>
                 <input asp-for="MaPhong" class="form-control" />
                 <span asp-validation-for="MaPhong" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TenPhong" class="control-label">✪ TÊN PHÒNG</label>
+                <label>✪ TÊN PHÒNG</label>
                 <input asp-for="TenPhong" class="form-control" />
                 <span asp-validation-for="TenPhong" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LoaiPhong" class="control-label">✪ LOẠI PHÒNG</label>
+                <label>✪ LOẠI PHÒNG</label>
                 <input asp-for="LoaiPhong" class="form-control" />
                 <span asp-validation-for="LoaiPhong" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GiaTien" class="control-label">✪ GIÁ TIỀN</label>
+                <label>✪ GIÁ TIỀN</label>
                 <input asp-for="GiaTien" class="form-control" />
                 <span asp-validation-for="GiaTien" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MaKhachHang" class="control-label"> ✪MÃ KHÁCH HÀNG</label>
+                <label> ✪MÃ KHÁCH HÀNG</label>
                 <select asp-for="MaKhachHang" class ="form-control" asp-items="ViewBag.MaKhachHang"></select>
             </div>
             <div class="form-group">
