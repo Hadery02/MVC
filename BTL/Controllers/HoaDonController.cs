@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BTL.Data;
 using BTL.Models;
+using OfficeOpenXml;
+using X.PagedList;
 
 namespace BTL.Controllers
 {
@@ -20,10 +22,27 @@ namespace BTL.Controllers
         }
 
         // GET: HoaDon
-        public async Task<IActionResult> Index()
+        // public async Task<IActionResult> Index()
+        // {
+        //     var applicationDbContext = _context.HoaDon.Include(h => h.KhachHang).Include(h => h.Phong);
+        //     return View(await applicationDbContext.ToListAsync());
+            
+        // }
+        public async Task<IActionResult> Index(int? page, int? PageSize)
         {
-            var applicationDbContext = _context.HoaDon.Include(h => h.KhachHang).Include(h => h.Phong);
-            return View(await applicationDbContext.ToListAsync());
+            ViewBag.PageSize = new List<SelectListItem>()
+            {
+                new SelectListItem() { Value="3",Text="3"},
+                new SelectListItem() { Value="5",Text="5"},
+                new SelectListItem() { Value="10",Text="10"},
+                new SelectListItem() { Value="15",Text="15"},
+                new SelectListItem() { Value="25",Text="25"},
+                new SelectListItem() { Value="50",Text="50"},
+            };
+            int pagesize = (PageSize ?? 3);
+            ViewBag.psize = pagesize;
+            var model = _context.HoaDon.ToList().ToPagedList(page ?? 1,pagesize);
+            return View(model);
         }
 
         // GET: HoaDon/Details/5
@@ -44,6 +63,23 @@ namespace BTL.Controllers
             }
 
             return View(hoaDon);
+        }
+        public IActionResult Download()
+        {
+            var fileName = "HoaDon.xlsx";
+            using ( ExcelPackage excelPackage = new ExcelPackage())
+            {
+                ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet 1");
+                worksheet.Cells["A1"].Value = "MaHoaDon";
+                worksheet.Cells["B1"].Value = "MaKhachHang";
+                worksheet.Cells["C1"].Value = "MaPhong";
+                worksheet.Cells["D1"].Value = "ThanhTien";
+                worksheet.Cells["E1"].Value = "NgayThanhToan";
+                var hdList = _context.HoaDon.ToList();
+                worksheet.Cells["A2"].LoadFromCollection(hdList);
+                var stream = new MemoryStream(excelPackage.GetAsByteArray());
+                return File(stream,"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",fileName);
+            }
         }
 
         // GET: HoaDon/Create

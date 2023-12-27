@@ -1,5 +1,6 @@
 @model IEnumerable<BTL.Models.HoaDon>
-
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
 @{
     ViewData["Title"] = "Index";
 }
@@ -8,6 +9,7 @@
 
 <p>
     <a asp-action="Create">Thêm mới</a>
+    <a class="btn btn-primary" asp-action="Download">Download file</a>
 </p>
 <table id="table">
     <thead>
@@ -31,10 +33,10 @@
 @foreach (var item in Model) {
         <tr>
             <td class="w3-center">
-                @Html.DisplayFor(modelItem => item.KhachHang.MaKhachHang)
+                @Html.DisplayFor(modelItem => item.MaKhachHang)
             </td>
             <td class="w3-center">
-                @Html.DisplayFor(modelItem => item.Phong.MaPhong)
+                @Html.DisplayFor(modelItem => item.MaPhong)
             </td>
             <td class="w3-center">
                 @Html.DisplayFor(modelItem => item.ThanhTien)
@@ -51,6 +53,30 @@
 }
     </tbody>
 </table>
+@using (Html.BeginForm("Index", "HoaDon", FormMethod.Get,new {id = "form1"}))
+{
+    <div class="row">
+        <div class="col-md-11">
+            @Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new {page = page,
+            pageSize = ViewBag.psize}),
+             new X.PagedList.Web.Common.PagedListRenderOptions { LiElementClasses = new string[] {"page-item"},
+              PageClasses = new string[] { "page-link" }})
+
+        </div>
+        <div class="col-md-1">
+            @Html.DropDownList("pageSize",null,new {@class="form-select"})
+        </div>
+    </div>
+}
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#pageSize").change(function(){
+            $("#form1").submit();
+        });
+    });
+</script>
+
 <style>
 #table{
   font-family: Arial, Helvetica, sans-serif;

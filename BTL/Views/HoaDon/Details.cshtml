@@ -6,7 +6,26 @@
 
 <h1>Thông tin Chi Tiết</h1>
 
-<div>
+<div >
+   <table>
+        <th>Thành Tiền</th>
+        <td class = "col-sm-10"> @Html.DisplayFor(model => model.ThanhTien)</td>
+    </tr>
+    <tr>
+        <th class = "col-sm-2">Ngày Thanh Toán</th>
+        <td class = "col-sm-10">@Html.DisplayFor(model => model.NgayThanhToan)</td>
+    </tr>
+    <tr>
+        <th class = "col-sm-2">Mã Khách Hàng</th>
+        <td class = "col-sm-10">@Html.DisplayFor(model => model.MaKhachHang)</td>
+    <tr>
+        <th class = "col-sm-2">Mã Phòng</th>
+        <td class = "col-sm-10">@Html.DisplayFor(model => model.MaPhong)</td>
+    </tr>
+   </table>
+    
+</div>
+@* <div>
 
     <hr />
     <dl class="row">
@@ -35,8 +54,26 @@
             @Html.DisplayFor(model => model.Phong.MaPhong)
         </dd>
     </dl>
-</div>
+</div> *@
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.MaHoaDon">Sửa</a> |
     <a asp-action="Index">Quay Lại</a>
 </div>
+<style>
+    table,th,td{
+        border-style: solid;
+        border:1px solid rgb(170, 115, 115);
+       
+        text-align:left;
+        width:35%
+    
+        
+    }
+    td{
+        padding-left:20px;
+        
+    }
+    form{
+        padding-top:10px;
+    }
+</style>
