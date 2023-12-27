@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BTL.Data;
 using BTL.Models;
+using X.PagedList;
+using OfficeOpenXml;
 
 namespace BTL.Controllers
 {
@@ -20,12 +22,22 @@ namespace BTL.Controllers
         }
 
         // GET: Phong
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page,int? PageSize)
         {
-            var applicationDbContext = _context.Phong.Include(p => p.KhachHang);
-            return View(await applicationDbContext.ToListAsync());
+            ViewBag.PageSize = new List<SelectListItem>()
+            {
+                new SelectListItem() { Value="3",Text="3"},
+                new SelectListItem() { Value="5",Text="5"},
+                new SelectListItem() { Value="10",Text="10"},
+                new SelectListItem() { Value="15",Text="15"},
+                new SelectListItem() { Value="25",Text="25"},
+                new SelectListItem() { Value="50",Text="50"},
+            };
+            int pagesize = (PageSize ?? 3);
+            ViewBag.psize = pagesize;
+            var model = _context.Phong.ToList().ToPagedList(page ?? 1,pagesize);
+            return View(model);
         }
-
         // GET: Phong/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -155,7 +167,23 @@ namespace BTL.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+        public IActionResult Download()
+        {
+            var fileName = "PhongList.xlsx";
+            using ( ExcelPackage excelPackage = new ExcelPackage())
+            {
+                ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet 1");
+                worksheet.Cells["A1"].Value = "MaPhong";
+                worksheet.Cells["B1"].Value = "TenPhong";
+                worksheet.Cells["C1"].Value = "LoaiPhong";
+                worksheet.Cells["D1"].Value = "GiaTien";
+                worksheet.Cells["E1"].Value = "MaKhachHang";
+                var PhongList = _context.Phong.ToList();
+                worksheet.Cells["A2"].LoadFromCollection(PhongList);
+                var stream = new MemoryStream(excelPackage.GetAsByteArray());
+                return File(stream,"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",fileName);
+            }
+        }
         private bool PhongExists(int id)
         {
             return _context.Phong.Any(e => e.MaPhong == id);
