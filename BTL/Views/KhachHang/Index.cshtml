@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+@model IEnumerable<BTL.Models.KhachHang>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Thông tin khách hàng </h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Download">Download file</a>
+</p>
+<table  id="a">
+    <thead>
+        <tr>
+            <th>
+                Mã khách hàng
+            </th>
+            <th>
+                Họ và tên
+            </th>
+            <th>
+                Địa Chỉ
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Tuổi
+            </th>
+            <th>
+                Ngày Thuê
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="w3-center">
+                @Html.DisplayFor(modelItem => item.MaKhachHang)
+            </td>
+            <td class="w3-center">
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td class="w3-center">
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td class="w3-center">
+                @Html.DisplayFor(modelItem => item.Sdt)
+            </td>
+            <td class="w3-center">
+                @Html.DisplayFor(modelItem => item.Tuoi)
+            </td>
+
+            <td class="w3-center">
+                @Html.DisplayFor(modelItem => item.NgayThue)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaKhachHang">Sửa </a> |
+                <a asp-action="Details" asp-route-id="@item.MaKhachHang">Chi tiết </a> |
+                <a asp-action="Delete" asp-route-id="@item.MaKhachHang">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<style>
+#a{
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top:35px;
+}
+
+#a td, #a th {
+  border: 1px solid #631c1c;
+  padding: 8px;
+}  
+#a tr:nth-child(even){background-color: #c3f3f5;}
+
+#a tr:hover {background-color: #dddddd;}
+
+#a th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+h1 {
+    text-align :center;
+}
+{
+    color : light-green;
+}
+body{
+    background-color:rgba(171, 220, 216, 0.492);
+}
+</style>
+@using (Html.BeginForm("Index", "KhachHang", FormMethod.Get,new {id = "form1"}))
+{
+    <div class="row">
+        <div class="col-md-11">
+            @Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new {page = page,
+            pageSize = ViewBag.psize}),
+             new X.PagedList.Web.Common.PagedListRenderOptions { LiElementClasses = new string[] {"page-item"},
+              PageClasses = new string[] { "page-link" }})
+
+        </div>
+        <div class="col-md-1">
+            @Html.DropDownList("pageSize",null,new {@class="form-select"})
+        </div>
+    </div>
+}
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#pageSize").change(function(){
+            $("#form1").submit();
+        });
+    });
+</script>
+</html>

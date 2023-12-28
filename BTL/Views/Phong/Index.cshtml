@@ -1,0 +1,85 @@
+@model IEnumerable<BTL.Models.Phong>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style=text-align:center>Quản Lý Phòng</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Thêm Mới Phòng</a>
+    <a class="btn btn-primary" asp-action="Download">Download file</a>
+</p>
+<table class="table">
+    <tr class="tr1">
+        <th>TÊN PHÒNG</th>
+        <th>LOẠI PHÒNG</th>
+        <th>GIÁ TIỀN</th>
+        <th>KHÁCH HÀNG</th>
+        <th>CÁC CHỨC NĂNG KHÁC</th>
+    </tr>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenPhong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiPhong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaTien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaKhachHang)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaPhong">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.MaPhong">Chi Tiết</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaPhong">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<style>
+
+table,th,td{
+border :1px solid black;
+}
+h1{
+    margin-bottom:100px;
+    color:rgb(58, 58, 221);
+}
+.tr1{
+    background-color:rgb(145, 204, 224);
+}
+body{
+    background-color:rgb(211, 228, 231);
+}
+
+</style>
+@using (Html.BeginForm("Index", "Phong", FormMethod.Get,new {id = "form1"}))
+{
+    <div class="row">
+        <div class="col-md-11">
+            @Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new {page = page,
+            pageSize = ViewBag.psize}),
+             new X.PagedList.Web.Common.PagedListRenderOptions { LiElementClasses = new string[] {"page-item"},
+              PageClasses = new string[] { "page-link" }})
+
+        </div>
+        <div class="col-md-1">
+            @Html.DropDownList("pageSize",null,new {@class="form-select"})
+        </div>
+    </div>
+}
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#pageSize").change(function(){
+            $("#form1").submit();
+        });
+    });
+</script>

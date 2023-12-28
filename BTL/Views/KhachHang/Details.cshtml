@@ -1,0 +1,60 @@
+@model BTL.Models.KhachHang
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Chi tiết</h1>
+
+<hr>
+<div >
+   <table>
+        <th>Mã Khách hàng</th>
+        <td class = "col-sm-10"> @Html.DisplayFor(model => model.MaKhachHang)</td>
+    </tr>
+    <tr>
+        <th class = "col-sm-2"> Họ Và Tên</th>
+        <td class = "col-sm-10">@Html.DisplayFor(model => model.HoTen)</td>
+    </tr>
+    <tr>
+        <th class = "col-sm-2">Địa Chỉ </th>
+        <td class = "col-sm-10">@Html.DisplayFor(model => model.DiaChi)</td>
+    </tr>
+    <tr>
+        <th class = "col-sm-2">Số điện thoại</th>
+        <td class = "col-sm-10">@Html.DisplayFor(model => model.Sdt)</td>
+    </tr><tr>
+        <th class = "col-sm-2">Tuổi </th>
+        <td class = "col-sm-10"> @Html.DisplayFor(model => model.Tuoi)
+        </td>
+    </tr>
+    <tr>
+        <th class = "col-sm-2"> Ngày thuê</th>
+        <td class = "col-sm-10">@Html.DisplayFor(model => model.NgayThue)</td>
+    </tr>
+   </table>
+    
+</div>
+
+<style>
+    table,th,td{
+        border-style: solid;
+        border:1px solid rgb(170, 115, 115);
+       
+        text-align:left;
+        width:35%
+    
+        
+    }
+    td{
+        padding-left:20px;
+        
+    }
+    form{
+        padding-top:10px;
+    }
+</style>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.MaKhachHang">Sửa thông tin</a> |
+    <a asp-action="Index">Quay lại</a>
+</div>

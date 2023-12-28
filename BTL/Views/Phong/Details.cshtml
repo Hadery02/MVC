@@ -1,0 +1,41 @@
+@model BTL.Models.Phong
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Chi Tiết Phòng</h1>
+<table>
+    <tr>
+    <td>✪ MÃ PHÒNG</td>
+    <td class = "col-sm-10">@Html.DisplayFor(model => model.MaPhong)</td>
+    </tr>
+    <tr> 
+    <td>✪ TÊN PHÒNG</td>
+    <td class = "col-sm-10">@Html.DisplayFor(model => model.TenPhong)</td>
+    </tr>
+    <tr>
+    <td>✪ LOẠI PHÒNG</td>
+    <td class = "col-sm-10">@Html.DisplayFor(model => model.LoaiPhong)</td>
+    </tr>  
+    <tr>
+    <td>✪ GIÁ TIỀN</td>
+    <td class = "col-sm-10">@Html.DisplayFor(model => model.GiaTien)</td>
+    </tr> 
+    <tr>
+    <td>✪ KHÁCH HÀNG</td>
+    <td class = "col-sm-10">@Html.DisplayFor(model => model.KhachHang.MaKhachHang)</td>
+    </tr>
+</table>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.MaPhong">SỬA</a>
+</div>
+<style>
+h1{
+    margin-bottom:50px;
+    color:rgb(58, 58, 221);
+}
+body{
+    background-color:rgb(211, 228, 231);
+}
+</style>

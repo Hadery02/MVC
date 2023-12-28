@@ -1,0 +1,107 @@
+@model IEnumerable<BTL.Models.HoaDon>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Hóa Đơn</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Thêm mới</a>
+     <a class="btn btn-primary" asp-action="Download">Download file</a>
+</p>
+<table id="table">
+    <thead>
+       <tr>
+            <th>
+                Mã Khách Hàng
+            </th>
+            <th>
+                Thành Tiền
+            </th>
+            <th>
+                Ngày Thanh Toán
+            </th>
+             <th>
+                Mã Nhân Viên
+            </th>
+             <th>Chi Tiết</th>
+        </tr>   
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="w3-center">
+                @Html.DisplayFor(modelItem => item.MaKhachHang)
+            </td>
+            <td class="w3-center">
+                @Html.DisplayFor(modelItem => item.ThanhTien)
+            </td>
+            <td class="w3-center">
+                @Html.DisplayFor(modelItem => item.NgayThanhToan)
+            </td>
+             <td class="w3-center">
+                @Html.DisplayFor(modelItem => item.MaNhanVien)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaHoaDon">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.MaHoaDon">Thông tin</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaHoaDon">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<style>
+#table{
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top:100px;
+}
+#table td, #table th {
+  border: 1px solid #151414;
+  padding: 8px;
+}  
+#table tr:nth-child(even){background-color: #69e0e4;}
+
+#table tr:hover {background-color: #c9e4ec;}
+
+#table th {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: left;
+  background-color: #aa8904;
+  color: rgb(247, 246, 246);
+}
+h1 {
+    text-align :center;
+}
+{
+    color : light-gree;
+}
+</style>
+@using (Html.BeginForm("Index", "HoaDon", FormMethod.Get,new {id = "form1"}))
+{
+    <div class="row">
+        <div class="col-md-11">
+            @Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new {page = page,
+            pageSize = ViewBag.psize}),
+             new X.PagedList.Web.Common.PagedListRenderOptions { LiElementClasses = new string[] {"page-item"},
+              PageClasses = new string[] { "page-link" }})
+
+        </div>
+        <div class="col-md-1">
+            @Html.DropDownList("pageSize",null,new {@class="form-select"})
+        </div>
+    </div>
+}
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#pageSize").change(function(){
+            $("#form1").submit();
+        });
+    });
+</script>

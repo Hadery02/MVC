@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <body>
+@model BTL.Models.KhachHang
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="a">
+<h1>Sửa thông tin khách hàng</h1>
+
+<hr />
+<div class="row"  >
+    <div class="b" style="background-color:rgb(161, 228, 190);">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+         
+            <div class="form-group">
+                <label asp-for="MaKhachHang" >Mã Khách Hàng</label>
+                <input asp-for="MaKhachHang" class="form-control" />
+                <span asp-validation-for="MaKhachHang" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HoTen" class="control-label">Họ Và Tên</label>
+                <input asp-for="HoTen" class="form-control" />
+                <span asp-validation-for="HoTen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiaChi" class="control-label">Địa Chỉ</label>
+                <input asp-for="DiaChi" class="form-control" />
+                <span asp-validation-for="DiaChi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sdt" class="control-label">Số Điện Thoại</label>
+                <input asp-for="Sdt" class="form-control" />
+                <span asp-validation-for="Sdt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tuoi" class="control-label">Tuổi</label>
+                <input asp-for="Tuoi" class="form-control" />
+                <span asp-validation-for="Tuoi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgayThue" class="control-label">Ngày thuê</label>
+                <input type="date" asp-for="NgayThue" class="form-control" />
+                <span asp-validation-for="NgayThue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Quay lại</a>
+</div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<style>
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+
+}
+
+div.a {
+  width: 50%;
+  border: 1px solid black;
+  padding-left:20px;
+  
+}
+div.b{
+    width:70%;
+    padding:5px;
+    
+}
+body{
+    background-color: rgb(220, 220, 166);
+}
+
+</style>
+</body>
+</html>
