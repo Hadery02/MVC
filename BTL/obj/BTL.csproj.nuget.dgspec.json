@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BaiTapLon\\BTL\\BTL.csproj": {}
+    "C:\\MVC\\BTL\\BTL.csproj": {}
   },
   "projects": {
-    "D:\\BaiTapLon\\BTL\\BTL.csproj": {
+    "C:\\MVC\\BTL\\BTL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BaiTapLon\\BTL\\BTL.csproj",
+        "projectUniqueName": "C:\\MVC\\BTL\\BTL.csproj",
         "projectName": "BTL",
-        "projectPath": "D:\\BaiTapLon\\BTL\\BTL.csproj",
-        "packagesPath": "C:\\Users\\HIEP\\.nuget\\packages\\",
-        "outputPath": "D:\\BaiTapLon\\BTL\\obj\\",
+        "projectPath": "C:\\MVC\\BTL\\BTL.csproj",
+        "packagesPath": "C:\\Users\\trand\\.nuget\\packages\\",
+        "outputPath": "C:\\MVC\\BTL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\HIEP\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\trand\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
