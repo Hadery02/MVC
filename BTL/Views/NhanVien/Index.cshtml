@@ -5,13 +5,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Quản Lý Nhân Viên</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+  <a class="btn btn-primary" asp-action="Create">Thêm Mới Nhân Viên</a>
 </p>
 <table class="table">
-    <thead>
+    <thead class="tr1">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.TenNV)
@@ -44,14 +44,32 @@
                 @Html.DisplayFor(modelItem => item.Tuoi)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.MaNhanVien">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MaNhanVien">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MaNhanVien">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.MaNhanVien">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.MaNhanVien">Chi Tiết</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaNhanVien">Xóa</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<style>
+
+table,th,td{
+border :1px solid black;
+}
+h1{
+    margin-bottom:100px;
+    color:rgb(58, 58, 221);
+    text-align:center;
+}
+.tr1{
+    background-color:rgb(179, 145, 224);
+}
+body{
+    background-color:rgb(218, 196, 214));
+}
+
+</style>
 @using (Html.BeginForm("Index", "NhanVien", FormMethod.Get,new {id = "form1"}))
 {
     <div class="row">

@@ -9,7 +9,24 @@
 <div>
     <h4>HoaDon</h4>
     <hr />
-    <dl class="row">
+    <table>
+        <th>Khách Hàng</th>
+        <td class = "col-sm-10"> @Html.DisplayFor(model => model.MaKhachHang)</td>
+    </tr>
+    <tr>
+        <th class = "col-sm-2">Thành Tiền</th>
+        <td class = "col-sm-10">@Html.DisplayFor(model => model.ThanhTien)</td>
+    </tr>
+    <tr>
+        <th class = "col-sm-2">Ngày Thanh Toán</th>
+        <td class = "col-sm-10">@Html.DisplayFor(model => model.NgayThanhToan)</td>
+    </tr>
+    <tr>
+        <th class = "col-sm-2">Nhân Viên</th>
+        <td class = "col-sm-10">@Html.DisplayFor(model => model.MaNhanVien)</td>
+    </tr>
+   </table>
+    @* <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.KhachHang)
         </dt>
@@ -34,9 +51,27 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.NhanVien.MaNhanVien)
         </dd>
-    </dl>
+    </dl> *@
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.MaHoaDon">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.MaHoaDon">Thoát</a> |
+    <a asp-action="Index">Quay lại</a>
 </div>
+<style>
+    table,th,td{
+        border-style: solid;
+        border:1px solid rgb(170, 115, 115);
+       
+        text-align:left;
+        width:35%
+    
+        
+    }
+    td{
+        padding-left:20px;
+        
+    }
+    form{
+        padding-top:10px;
+    }
+</style>

@@ -150,7 +150,7 @@ namespace BTL.Controllers
 
             var hoaDon = await _context.HoaDon
                 .Include(h => h.KhachHang)
-                .Include(h => h.MaNhanVien)
+                .Include(h => h.NhanVien)
                 .FirstOrDefaultAsync(m => m.MaHoaDon == id);
             if (hoaDon == null)
             {
