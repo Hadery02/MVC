@@ -5,8 +5,6 @@
 }
 
 <h1>Chỉnh Sửa</h1>
-
-<h4>Nhân Viên</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,28 +12,27 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="MaNhanVien" />
             <div class="form-group">
-                <label asp-for="TenNV" class="control-label"></label>
-                <input asp-for="TenNV" class="form-control" />
+                <label class="w3-text-brown" asp-for="TenNV" class="control-label"></label>
+                <input class="w3-input w3-border w3-sand" asp-for="TenNV" class="form-control" />
                 <span asp-validation-for="TenNV" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DiaChi" class="control-label"></label>
-                <input asp-for="DiaChi" class="form-control" />
+                <label class="w3-text-brown" asp-for="DiaChi" class="control-label"></label>
+                <input class="w3-input w3-border w3-sand" asp-for="DiaChi" class="form-control" />
                 <span asp-validation-for="DiaChi" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sdt" class="control-label"></label>
-                <input asp-for="Sdt" class="form-control" />
+                <label class="w3-text-brown" asp-for="Sdt" class="control-label"></label>
+                <input class="w3-input w3-border w3-sand" asp-for="Sdt" class="form-control" />
                 <span asp-validation-for="Sdt" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Tuoi" class="control-label"></label>
-                <input asp-for="Tuoi" class="form-control" />
+                <label class="w3-text-brown" asp-for="Tuoi" class="control-label"></label>
+                <input class="w3-input w3-border w3-sand"asp-for="Tuoi" class="form-control" />
                 <span asp-validation-for="Tuoi" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+             <p>
+             <button class="w3-btn w3-brown">Thêm</button></p>
         </form>
     </div>
 </div>
@@ -54,5 +51,8 @@ h1{
 }
 body{
     background-color:rgb(211, 228, 231);
+}
+input{
+    border-radius:10px;
 }
 </style>

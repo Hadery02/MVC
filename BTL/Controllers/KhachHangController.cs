@@ -164,60 +164,56 @@ namespace BTL.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool KhachHangExists(int id)
-        {
-            return _context.KhachHang.Any(e => e.MaKhachHang == id);
-        }
-    
-    public IActionResult Upload()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Upload(IFormFile file)
-        {
-            if (file!=null)
-                {
-                    string fileExtension = Path.GetExtension(file.FileName);
-                    if (fileExtension != ".xls" && fileExtension != ".xlsx")
-                    {
-                        ModelState.AddModelError("", "Please choose excel file to upload!");
-                    }
-                    else
-                    {
-                        //rename file when upload to server
-                        var fileName = DateTime.Now.ToShortTimeString() + fileExtension;
-                        var filePath = Path.Combine(Directory.GetCurrentDirectory() + "/Uploads/Excels", "File" + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Millisecond + fileExtension);
-                        var fileLocation = new FileInfo(filePath).ToString();
-                        if (file.Length > 0)
-                        {
-                            using (var stream = new FileStream(filePath, FileMode.Create))
-                            {
-                                //save file to server
-                                await file.CopyToAsync(stream);
-                                //read data from file and write to database
-                                var dt = _excelProcess.ExcelToDataTable(fileLocation);
-                                for(int i = 0; i < dt.Rows.Count; i++)
-                                {
-                                    var ps = new KhachHang();
-                                    ps.MaKhachHang = Convert.ToInt16(dt.Rows[i][0]);
-                                    ps.HoTen = dt.Rows[i][1].ToString();
-                                    ps.DiaChi = dt.Rows[i][2].ToString();
-                                    ps.Sdt = dt.Rows[i][3].ToString();
-                                    ps.Tuoi = Convert.ToInt16(dt.Rows[i][4]);
-                                    ps.NgayThue = dt.Rows[i][5].ToString();
-                                    _context.Add(ps);
-                                }
-                                await _context.SaveChangesAsync();
-                                return RedirectToAction(nameof(Index));
-                            }
-                        }
-                    }
-                }
+        
+    // public IActionResult Upload()
+    //     {
+    //         return View();
+    //     }
+    //     [HttpPost]
+    //     [ValidateAntiForgeryToken]
+    //     public async Task<IActionResult> Upload(IFormFile file)
+    //     {
+    //         if (file!=null)
+    //             {
+    //                 string fileExtension = Path.GetExtension(file.FileName);
+    //                 if (fileExtension != ".xls" && fileExtension != ".xlsx")
+    //                 {
+    //                     ModelState.AddModelError("", "Please choose excel file to upload!");
+    //                 }
+    //                 else
+    //                 {
+    //                     //rename file when upload to server
+    //                     var fileName = DateTime.Now.ToShortTimeString() + fileExtension;
+    //                     var filePath = Path.Combine(Directory.GetCurrentDirectory() + "/Uploads/Excels", "File" + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Millisecond + fileExtension);
+    //                     var fileLocation = new FileInfo(filePath).ToString();
+    //                     if (file.Length > 0)
+    //                     {
+    //                         using (var stream = new FileStream(filePath, FileMode.Create))
+    //                         {
+    //                             //save file to server
+    //                             await file.CopyToAsync(stream);
+    //                             //read data from file and write to database
+    //                             var dt = _excelProcess.ExcelToDataTable(fileLocation);
+    //                             for(int i = 0; i < dt.Rows.Count; i++)
+    //                             {
+    //                                 var ps = new KhachHang();
+    //                                 ps.MaKhachHang = Convert.ToInt16(dt.Rows[i][0]);
+    //                                 ps.HoTen = dt.Rows[i][1].ToString();
+    //                                 ps.DiaChi = dt.Rows[i][2].ToString();
+    //                                 ps.Sdt = dt.Rows[i][3].ToString();
+    //                                 ps.Tuoi = Convert.ToInt16(dt.Rows[i][4]);
+    //                                 ps.NgayThue = dt.Rows[i][5].ToString();
+    //                                 _context.Add(ps);
+    //                             }
+    //                             await _context.SaveChangesAsync();
+    //                             return RedirectToAction(nameof(Index));
+    //                         }
+    //                     }
+    //                 }
+    //             }
             
-            return View();
-        }
+    //         return View();
+    //     }
         public IActionResult Download()
         {
             var fileName = "KhachHangList.xlsx";
@@ -235,6 +231,10 @@ namespace BTL.Controllers
                 var stream = new MemoryStream(excelPackage.GetAsByteArray());
                 return File(stream,"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",fileName);
             }
+        }
+    private bool KhachHangExists(int id)
+        {
+            return _context.KhachHang.Any(e => e.MaKhachHang == id);
         }
     
     }   

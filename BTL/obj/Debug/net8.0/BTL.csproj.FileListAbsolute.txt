@@ -855,3 +855,4 @@ D:\MVC\BTL\obj\Debug\net8.0\refint\BTL.dll
 D:\MVC\BTL\obj\Debug\net8.0\BTL.pdb
 D:\MVC\BTL\obj\Debug\net8.0\BTL.genruntimeconfig.cache
 D:\MVC\BTL\obj\Debug\net8.0\ref\BTL.dll
+D:\BaiTapLon\BTL\obj\Debug\net8.0\BTL.sourcelink.json

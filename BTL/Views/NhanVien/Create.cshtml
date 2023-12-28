@@ -4,54 +4,51 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Thêm Mới Nhân Viên</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+<div class="w3-card-4">
+  <div class="w3-container w3-brown">
+    <h2>Thêm Mới Nhân Viên</h2>
+  </div>
+        <form  class="w3-container"  asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="MaNhanVien" class="control-label"></label>
-                <input asp-for="MaNhanVien" class="form-control" />
+                <label class="w3-text-brown" asp-for="MaNhanVien" class="control-label"></label>
+                <input class="w3-input w3-border w3-sand" asp-for="MaNhanVien" class="form-control" />
                 <span asp-validation-for="MaNhanVien" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TenNV" class="control-label"></label>
-                <input asp-for="TenNV" class="form-control" />
+                <label class="w3-text-brown" asp-for="TenNV" class="control-label"></label>
+                <input class="w3-input w3-border w3-sand" asp-for="TenNV" class="form-control" />
                 <span asp-validation-for="TenNV" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DiaChi" class="control-label"></label>
-                <input asp-for="DiaChi" class="form-control" />
+                <label class="w3-text-brown" asp-for="DiaChi" class="control-label"></label>
+                <input class="w3-input w3-border w3-sand" asp-for="DiaChi" class="form-control" />
                 <span asp-validation-for="DiaChi" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sdt" class="control-label"></label>
-                <input asp-for="Sdt" class="form-control" />
+                <label class="w3-text-brown"asp-for="Sdt" class="control-label"></label>
+                <input class="w3-input w3-border w3-sand" asp-for="Sdt" class="form-control" />
                 <span asp-validation-for="Sdt" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Tuoi" class="control-label"></label>
-                <input asp-for="Tuoi" class="form-control" />
+                <label class="w3-text-brown"asp-for="Tuoi" class="control-label"></label>
+                <input class="w3-input w3-border w3-sand" asp-for="Tuoi" class="form-control" />
                 <span asp-validation-for="Tuoi" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+           <p>
+            <button class="w3-btn w3-brown">Thêm </button></p>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 <style>
 h1{
     margin-bottom:50px;
     color:rgb(58, 58, 221);
 }
 body{
-    background-color:rgb(211, 228, 231);
+    background-color:rgb(139, 202, 213);
 }
 </style>
 @section Scripts {
